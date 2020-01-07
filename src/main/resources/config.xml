@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application>
+    <module name="system">
+
+        <group name="default">
+
+            <configValue key="name">GISINFO统一开发框架</configValue>
+
+            <!--是否开启权限过滤-->
+            <configValue key="auth">false</configValue>
+
+            <!--权限验证类型token-->
+            <configValue key="authType">token</configValue>
+
+            <!--是否装载数据库配置-->
+            <configValue key = "db">true</configValue>
+
+            <!--日志记录方式 file|table-->
+            <configValue key="log">file</configValue>
+
+        </group>
+
+    </module>
+
+    <module name="security">
+
+        <group name="default">
+
+            <!--数据是否需要加密-->
+            <configValue key="response-encrypt">false</configValue>
+
+        </group>
+
+    </module>
+
+    <!-- 网络配置-->
+    <module name="Http">
+
+        <group name="FileUpload">
+
+            <configValue key="TempDir">E://gisinfo//gisinfo-sand//</configValue>
+
+            <configValue key="MaxSize">104857600</configValue>
+            <!-- 白名单-->
+            <configValue key="Include">txt,png</configValue>
+
+        </group>
+
+        <group name="Filter">
+
+            <configValue key="Exclude">/,/captcha,/app/security,/jolokia/**,/admin/**,file/*,/websocket/*,/login,/getModelMappingData,/**/favicon.ico</configValue>
+
+        </group>
+
+    </module>
+
+    <!--跨域配置-->
+    <module name="Cors">
+
+        <!-- 通用跨域配置,-->
+        <group name="Commom">
+            <configValue key="Mapping">/**</configValue>
+            <configValue key="Headers">*</configValue>
+            <configValue key="Methods">POST,GET,OPTIONS</configValue>
+            <!--http://localhost:8080-->
+            <configValue key="Origins">*</configValue>
+            <configValue key="Expose">Authorization,response-hash</configValue>
+        </group>
+
+        <!--<group name="single">-->
+            <!--<configValue key="Mapping">/admin</configValue>-->
+            <!--<configValue key="Headers">*</configValue>-->
+            <!--<configValue key="Methods">POST,GET</configValue>-->
+            <!--<configValue key="Origins">http://localhost:8080</configValue>-->
+            <!--<configValue key="Expose">Authorization,response-hash</configValue>-->
+        <!--</group>-->
+
+    </module>
+
+    <!--自定义配置-->
+    <module name="custom">
+
+        <!--word导出相关-->
+        <group name="word">
+            <configValue key="inPath">C:\\Work\\WorkSpace\\eqim_server\\src\\main\\resources\\office\\word\\</configValue>
+        </group>
+
+    </module>
+
+    <!--地图打印图片参数配置-->
+    <!--<module name="MapPrintRequest">-->
+        <!--<group name="get0">-->
+            <!--&lt;!&ndash;生成类型&ndash;&gt;-->
+            <!--<configValue key="printType">jpg</configValue>-->
+            <!--&lt;!&ndash;对应word&ndash;&gt;-->
+            <!--<configValue key="printWord"></configValue>-->
+            <!--&lt;!&ndash;模板名称&ndash;&gt;-->
+            <!--<configValue key="printName">上海市危险源分布图</configValue>-->
+            <!--&lt;!&ndash;显示图层&ndash;&gt;-->
+            <!--<configValue key="printLayers">1,2</configValue>-->
+            <!--&lt;!&ndash;模板&ndash;&gt;-->
+            <!--<configValue key="printTemplate">N29A3V</configValue>-->
+            <!--&lt;!&ndash;模板地址&ndash;&gt;-->
+            <!--<configValue key="printUrl">http://192.168.0.46:6080/arcgis/rest/services/DZ/N29A3V/MapServer</configValue>-->
+            <!--&lt;!&ndash;插入word图片大小&ndash;&gt;-->
+            <!--<configValue key="printWordImgSize">310;230</configValue>-->
+            <!--&lt;!&ndash;下载位置&ndash;&gt;-->
+            <!--<configValue key="printDownloadPath">图件-上海局/</configValue>-->
+        <!--</group>-->
+    <!--</module>-->
+
+    <!--地图生成word参数配置-->
+    <module name="MapWordRequest">
+        <group name="get0">
+            <!--word名称-->
+            <configValue key="wordName">震区房屋统计</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+       </group>
+        <group name="get1">
+            <!--word名称-->
+            <configValue key="wordName">地震背景信息</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+        </group>
+        <group name="get2">
+            <!--word名称-->
+            <configValue key="wordName">震区人口信息</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+        </group>
+        <group name="get3">
+            <!--word名称-->
+            <configValue key="wordName">重点目标信息</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+        </group>
+        <group name="get4">
+            <!--word名称-->
+            <configValue key="wordName">震中空间距离分布</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+        </group>
+        <group name="get5">
+            <!--word名称-->
+            <configValue key="wordName">震区经济信息</configValue>
+            <!--word路径-->
+            <configValue key="wordPath">省内破坏//文档-背景信息//</configValue>
+        </group>
+    </module>
+
+    <!--地图模板配置-->
+    <module name="MapTemplate">
+        <group name="get">
+            <!--打印模板服务-->
+            <configValue key="getPrintService">http://192.168.0.46:6080/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute</configValue>
+            <!--生成word路径-->
+            <configValue key="createWordPath">D://gisinfo//apache-tomcat-9.0.19webApp//mapTemplate//download//word//</configValue>
+            <!--下载图片路径-->
+            <configValue key="downloadImgPath">D://gisinfo//apache-tomcat-9.0.19webApp//mapTemplate//download//img//</configValue>
+            <!--打印模板路径-->
+            <configValue key="printModel">D://gisinfo//apache-tomcat-9.0.19webApp//mapTemplate//model//print//</configValue>
+            <!--模板文本路径-->
+            <configValue key="contentText">D://gisinfo//apache-tomcat-9.0.19webApp//mapTemplate//model//contentText//</configValue>
+            <!--模板word路径-->
+            <configValue key="modelWordPath">D://gisinfo//apache-tomcat-9.0.19webApp//mapTemplate//model//word//</configValue>
+            <!--图片类型配置-->
+            <configValue key="imgType">jpg</configValue>
+            <!--word类型配置-->
+            <configValue key="wordType">docx</configValue>
+            <!--震区房屋统计-->
+            <configValue key="zqwftj">震区房屋统计</configValue>
+            <!--地震背景信息-->
+            <configValue key="dzbjxx">地震背景信息</configValue>
+            <!--震区人口信息-->
+            <configValue key="zqrkxx">震区人口信息</configValue>
+            <!--重点目标信息-->
+            <configValue key="zdmbxx">重点目标信息</configValue>
+            <!--震中空间距离分布-->
+            <configValue key="zzkjjlfb">震中空间距离分布</configValue>
+            <!--震区经济信息-->
+            <configValue key="zqjjxx">震区经济信息</configValue>
+        </group>
+    </module>
+
+</application>

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>com.gisinfo.sand</groupId>
+    <version>2.1</version>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
+    <artifactId>EQIM_Bis</artifactId>
+    <name>EQIM_Bis</name>
+    <description>聚沙成塔，聚水成湖</description>
+
+    <developers>
+        <developer>
+            <id>yuzhibin</id>
+            <name>于志斌</name>
+            <email>yuzhibin@gisinfo.com</email>
+            <url>http://www.gisinfo.com</url>
+            <organization>杰狮信息技术有限公司</organization>
+            <organizationUrl>http://www.gisinfo.com</organizationUrl>
+            <roles>
+                <role>开发工程师</role>
+            </roles>
+            <timezone>8</timezone>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>issues</system>
+        <url>https://gitee.com/yuzhibin/sand/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git@gitee.com:yuzhibin/sand.git</connection>
+    </scm>
+
+    <inceptionYear>2018</inceptionYear>
+
+    <repositories>
+        <repository>
+            <id>GISINFO</id>
+            <name>GISINFO</name>
+            <url>http://116.228.152.154:20912/repository/maven-public/</url>
+            <releases>
+                <updatePolicy>daily</updatePolicy><!-- never,always,interval n -->
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy><!-- fail,ignore -->
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <properties>
+        <dependency.locations.enabled>false</dependency.locations.enabled>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring.boot.version>2.1.3.RELEASE</spring.boot.version>
+        <gisinfo.sand.core.version>2.1</gisinfo.sand.core.version>
+        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+        <maven-assembly-plugin.version>3.1.0</maven-assembly-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+        <maven-help-plugin.version>3.1.0</maven-help-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-invoker-plugin.version>3.1.0</maven-invoker-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.gisinfo</groupId>
+                <artifactId>gisinfo-sand-dependencies</artifactId>
+                <version>2.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.gisinfo</groupId>
+            <artifactId>gisinfo-sand-core</artifactId>
+            <version>${gisinfo.sand.core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.gisinfo</groupId>
+            <artifactId>authclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.esri.geometry/esri-geometry-api -->
+        <dependency>
+            <groupId>com.esri.geometry</groupId>
+            <artifactId>esri-geometry-api</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.locationtech.jts/jts-core -->
+        <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.16.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.locationtech.jts.io/jts-io-common -->
+        <dependency>
+            <groupId>org.locationtech.jts.io</groupId>
+            <artifactId>jts-io-common</artifactId>
+            <version>1.16.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/systems.uom/systems-common -->
+        <dependency>
+            <groupId>systems.uom</groupId>
+            <artifactId>systems-common</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/tec.uom/uom-se -->
+        <dependency>
+            <groupId>tec.uom</groupId>
+            <artifactId>uom-se</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.ejml/ejml-all -->
+        <dependency>
+            <groupId>org.ejml</groupId>
+            <artifactId>ejml-all</artifactId>
+            <version>0.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aspose.words</groupId>  <!--自定义-->
+            <artifactId>aspose-words</artifactId>    <!--自定义-->
+            <version>18.10</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/aspose-words-18.10-jdk16.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.gisinfo.raster</groupId>  <!--自定义-->
+            <artifactId>gisinfo-micaps</artifactId>    <!--自定义-->
+            <version>1.0</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/Micaps.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-main</artifactId>    <!--自定义-->
+            <version>22.0</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-main-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-shapefile</artifactId>    <!--自定义-->
+            <version>22.0</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-shapefile-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-data</artifactId>    <!--自定义-->
+            <version>20.5</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-data-20.5.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-opengis</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-opengis-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-metadata</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-metadata-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-referencing</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-referencing-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>  <!--自定义-->
+            <artifactId>gt-geojson</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/gt-geojson-22.2.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.jacob</groupId>  <!--自定义-->
+            <artifactId>jacob</artifactId>    <!--自定义-->
+            <version>1.19</version> <!--自定义-->
+            <scope>system</scope> <!--system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它-->
+            <systemPath>${basedir}/lib/jacob.jar</systemPath> <!--项目根目录下的lib文件夹下-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.ooxml-schemas</groupId>  <!--自定义-->
+            <artifactId>ooxml-schemas</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/ooxml-schemas-1.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xmlbeans</groupId>  <!--自定义-->
+            <artifactId>xmlbeans</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/xmlbeans-2.6.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.poi-ooxml</groupId>  <!--自定义-->
+            <artifactId>poi-ooxml</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/poi-ooxml-3.7.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.poi-3.10-FINAL</groupId>  <!--自定义-->
+            <artifactId>poi-ooxml</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/poi-3.10-FINAL-20140208.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.beetl</groupId>  <!--自定义-->
+            <artifactId>beetl</artifactId>    <!--自定义-->
+            <version>22.2</version> <!--自定义-->
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/beetl-2.9.6.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                    <configuration>
+                        <recompressZippedFiles>false</recompressZippedFiles>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <version>${maven-invoker-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-help-plugin</artifactId>
+                    <version>${maven-help-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.gisinfo.sand.SandApplication</mainClass>
+                    <fork>true</fork>
+                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

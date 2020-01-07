@@ -1,0 +1,2 @@
+org.springframework.context.ApplicationListener=com.gisinfo.sand.core.web.listener.SandContextLoader
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.gisinfo.sand.auth.AuthConfigurable

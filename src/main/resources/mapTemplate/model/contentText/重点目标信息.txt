@@ -1,0 +1,1 @@
+据中国地震台网测定,北京时间${time},在${wz}(北纬${y}度,东经${x}度)发生${dzjb}级地震,震源深度约${zysd}公里。地震烈度Ⅵ度区内共涉及${sumSchool}所学校、${sumHospital}家医院、${sumReserior}个水库、${sumdzzhd}个地震灾害点；其中最高烈度范围内涉及${maxSchool}所学校、${maxHospital}家医院、${maxReserior}个水库、${maxdzzhd}个地震灾害点。

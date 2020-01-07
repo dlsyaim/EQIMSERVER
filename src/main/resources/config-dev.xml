@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application>
+    <!-- 数据源配置-->
+    <module name="DataSource">
+
+      <!--  <group name="default">
+          <configValue key="driverClass">com.mysql.cj.jdbc.Driver</configValue>
+            <configValue key="url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC&amp;allowMultiQueries=true</configValue>
+            <configValue key="userName">root</configValue>
+            <configValue key="password">root</configValue>
+            <configValue key="poolSize">5</configValue>
+            <configValue key="maxPoolSize">10</configValue>
+            <configValue key="minPoolSize">5</configValue>
+            <configValue key="test-Connect-Sql">select  1 from dual</configValue>
+        </group>-->
+
+        <group name="oracle">
+            <configValue key="driverClass">oracle.jdbc.driver.OracleDriver</configValue>
+            <configValue key="url">jdbc:oracle:thin:@192.168.0.242:1521:orcl</configValue>
+            <configValue key="userName">EQIMDB</configValue>
+            <configValue key="password">EQIMDB_123</configValue>
+            <configValue key="poolSize">5</configValue>
+            <configValue key="maxPoolSize">10</configValue>
+            <configValue key="minPoolSize">5</configValue>
+            <configValue key="test-Connect-Sql">select  1 from dual</configValue>
+        </group>
+
+    </module>
+</application>
